@@ -18,12 +18,11 @@
 
 - (void)setDyPage:(SMRDyPage *)dyPage {
     _dyPage = dyPage;
-    
-    self.tabBarItem.title = dyPage.title;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.view.backgroundColor = [SMRDyUtils color:self.dyPage.backgroundColor];
 }
 

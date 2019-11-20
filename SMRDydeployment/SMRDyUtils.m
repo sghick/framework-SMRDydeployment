@@ -14,7 +14,7 @@
     return [self objectAtIndex:index array:array trimSpace:YES];
 }
 + (id)objectAtIndex:(NSInteger)index array:(NSArray *)array trimSpace:(BOOL)trimSpace {
-    if ((index > 0) && (index < array.count)) {
+    if ((index >= 0) && (index < array.count)) {
         NSString *rtn = array[index];
         if ([rtn isKindOfClass:NSString.class] && trimSpace) {
             // 去除首尾空格

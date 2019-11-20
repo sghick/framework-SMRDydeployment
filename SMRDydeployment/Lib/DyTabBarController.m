@@ -19,18 +19,19 @@
 
 - (void)setDyPage:(SMRDyPage *)dyPage {
     _dyPage = dyPage;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
     
     NSMutableArray<UIViewController *> *controllers = [NSMutableArray array];
     for (SMRDyPage *sp in self.dyPage.sub_pages) {
         UIViewController *page = [SMRDyLoader controllerWithDyPage:sp];
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:page];
+        nav.tabBarItem.title = sp.title;
         [controllers addObject:nav];
     }
     self.viewControllers = controllers;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
 }
 
 @end

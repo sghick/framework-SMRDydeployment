@@ -1,4 +1,5 @@
 #import "SceneDelegate.h"
+#import "SMRDydeployment.h"
 
 @interface SceneDelegate ()
 
@@ -11,6 +12,14 @@
     // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+    
+    if (@available(iOS 13.0, *)) {
+        self.window = [[UIWindow alloc] initWithWindowScene:(UIWindowScene *)scene];
+    } else {
+        self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    }
+    
+    [[SMRDyLoader loader] loadjson:nil inWindow:self.window];
 }
 
 

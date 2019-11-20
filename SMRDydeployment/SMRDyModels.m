@@ -35,7 +35,7 @@
     SMRDyPage *page = [[SMRDyPage alloc] init];
     page.class_name = @"DyViewController";
     page.title = @"首页";
-    page.backgroundColor = @"#DDDDDD";
+    page.backgroundColor = @"#F19722";
     return page;
 }
 
@@ -43,7 +43,7 @@
     SMRDyPage *page = [[SMRDyPage alloc] init];
     page.class_name = @"DyViewController";
     page.title = @"商城";
-    page.backgroundColor = @"#999999";
+    page.backgroundColor = @"#D12920";
     return page;
 }
 
@@ -51,7 +51,7 @@
     SMRDyPage *page = [[SMRDyPage alloc] init];
     page.class_name = @"DyViewController";
     page.title = @"订单";
-    page.backgroundColor = @"#888888";
+    page.backgroundColor = @"#848484";
     return page;
 }
 
@@ -59,7 +59,7 @@
     SMRDyPage *page = [[SMRDyPage alloc] init];
     page.class_name = @"DyViewController";
     page.title = @"我的";
-    page.backgroundColor = @"#777777";
+    page.backgroundColor = @"#4A80E3";
     return page;
 }
 
