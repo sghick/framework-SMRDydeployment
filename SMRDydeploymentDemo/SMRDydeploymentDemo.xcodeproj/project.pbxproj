@@ -23,6 +23,9 @@
 		1D77331223853736005AD2BC /* DyTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D77330923853736005AD2BC /* DyTableController.m */; };
 		1D77331323853736005AD2BC /* SMRDyModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D77330B23853736005AD2BC /* SMRDyModels.m */; };
 		1D77331423853736005AD2BC /* SMRDyUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D77330D23853736005AD2BC /* SMRDyUtils.m */; };
+		1D77331823855508005AD2BC /* SMRDyFontParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D77331723855508005AD2BC /* SMRDyFontParser.m */; };
+		1D77331B23855511005AD2BC /* SMRDyColorParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D77331A23855511005AD2BC /* SMRDyColorParser.m */; };
+		1D77331E2385551C005AD2BC /* SMRDyFrameParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D77331D2385551C005AD2BC /* SMRDyFrameParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +81,12 @@
 		1D77330B23853736005AD2BC /* SMRDyModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRDyModels.m; sourceTree = "<group>"; };
 		1D77330C23853736005AD2BC /* SMRDyEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRDyEnums.h; sourceTree = "<group>"; };
 		1D77330D23853736005AD2BC /* SMRDyUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRDyUtils.m; sourceTree = "<group>"; };
+		1D77331623855508005AD2BC /* SMRDyFontParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMRDyFontParser.h; sourceTree = "<group>"; };
+		1D77331723855508005AD2BC /* SMRDyFontParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMRDyFontParser.m; sourceTree = "<group>"; };
+		1D77331923855511005AD2BC /* SMRDyColorParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMRDyColorParser.h; sourceTree = "<group>"; };
+		1D77331A23855511005AD2BC /* SMRDyColorParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMRDyColorParser.m; sourceTree = "<group>"; };
+		1D77331C2385551C005AD2BC /* SMRDyFrameParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMRDyFrameParser.h; sourceTree = "<group>"; };
+		1D77331D2385551C005AD2BC /* SMRDyFrameParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMRDyFrameParser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +184,7 @@
 				1D77330123853736005AD2BC /* SMRDyLoader.m */,
 				1D7732FF23853736005AD2BC /* SMRDyUtils.h */,
 				1D77330D23853736005AD2BC /* SMRDyUtils.m */,
+				1D773315238554F3005AD2BC /* SMRDyParsers */,
 			);
 			name = SMRDydeployment;
 			path = ../SMRDydeployment;
@@ -193,6 +203,19 @@
 				1D77330323853736005AD2BC /* DyView.m */,
 			);
 			path = Lib;
+			sourceTree = "<group>";
+		};
+		1D773315238554F3005AD2BC /* SMRDyParsers */ = {
+			isa = PBXGroup;
+			children = (
+				1D77331623855508005AD2BC /* SMRDyFontParser.h */,
+				1D77331723855508005AD2BC /* SMRDyFontParser.m */,
+				1D77331923855511005AD2BC /* SMRDyColorParser.h */,
+				1D77331A23855511005AD2BC /* SMRDyColorParser.m */,
+				1D77331C2385551C005AD2BC /* SMRDyFrameParser.h */,
+				1D77331D2385551C005AD2BC /* SMRDyFrameParser.m */,
+			);
+			path = SMRDyParsers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,11 +352,14 @@
 				1D7732CE23853723005AD2BC /* ViewController.m in Sources */,
 				1D77331223853736005AD2BC /* DyTableController.m in Sources */,
 				1D7732C823853723005AD2BC /* AppDelegate.m in Sources */,
+				1D77331E2385551C005AD2BC /* SMRDyFrameParser.m in Sources */,
 				1D7732D923853725005AD2BC /* main.m in Sources */,
 				1D77331423853736005AD2BC /* SMRDyUtils.m in Sources */,
 				1D77331123853736005AD2BC /* DyTabBarController.m in Sources */,
+				1D77331823855508005AD2BC /* SMRDyFontParser.m in Sources */,
 				1D77331023853736005AD2BC /* DyViewController.m in Sources */,
 				1D77331323853736005AD2BC /* SMRDyModels.m in Sources */,
+				1D77331B23855511005AD2BC /* SMRDyColorParser.m in Sources */,
 				1D7732CB23853723005AD2BC /* SceneDelegate.m in Sources */,
 				1D77330F23853736005AD2BC /* DyView.m in Sources */,
 			);

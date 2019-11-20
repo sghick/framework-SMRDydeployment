@@ -22,8 +22,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.view.backgroundColor = [SMRDyUtils color:self.dyPage.backgroundColor];
+    
+    for (SMRDyView *dv in self.dyPage.sub_views) {
+        UIView *view = [SMRDyLoader viewWithDyView:dv];
+        [self.view addSubview:view];
+    }
 }
 
 @end

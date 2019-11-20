@@ -17,6 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SMRDyView : NSObject
 
 @property (strong, nonatomic) NSString *class_name;
+@property (strong, nonatomic) NSString *frame;
+@property (strong, nonatomic) NSString *backgroundColor;
+
 @property (strong, nonatomic, nullable) NSArray<SMRDyView *> *sub_views;
 
 @end

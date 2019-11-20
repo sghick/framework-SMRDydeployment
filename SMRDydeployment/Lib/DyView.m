@@ -7,6 +7,7 @@
 //
 
 #import "DyView.h"
+#import "SMRDydeployment.h"
 
 @implementation DyView
 
@@ -14,6 +15,10 @@
 
 - (void)setDyView:(SMRDyView *)dyView {
     _dyView = dyView;
+    if (dyView.frame) {
+        self.frame = [SMRDyUtils rect:dyView.frame];
+        self.backgroundColor = [SMRDyUtils color:dyView.backgroundColor];
+    }
 }
 
 @end
