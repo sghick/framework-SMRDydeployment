@@ -44,7 +44,7 @@
     
     SMRDyView *rightView = [[SMRDyView alloc] init];
     rightView.class_name = @"DyView";
-    rightView.frame = @"{{100*5,100*2},{100*0.5,100/2}}";
+    rightView.frame = @"{{10*5,100*2},{100*0.5,100/2}}";
     rightView.backgroundColor = @"#848484,0.5";
     
     page.sub_views = @[leftView, rightView];
