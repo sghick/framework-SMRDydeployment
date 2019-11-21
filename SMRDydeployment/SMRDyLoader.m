@@ -42,9 +42,7 @@
     Class cls = NSClassFromString(dyPage.class_name);
     UIViewController<SMRDyPageProtocol> *page = (UIViewController<SMRDyPageProtocol> *)[[cls alloc] init];
     if ([page isKindOfClass:UIViewController.class]) {
-        if ([page respondsToSelector:@selector(setDyPage:)]) {
-            page.dyPage = dyPage;
-        }
+        [page loadDyPage:dyPage];
         return page;
     }
     return nil;
@@ -54,9 +52,7 @@
     Class cls = NSClassFromString(dyView.class_name);
     UIView<SMRDyViewProtocol> *view = (UIView<SMRDyViewProtocol> *)[[cls alloc] init];
     if ([view isKindOfClass:UIView.class]) {
-        if ([view respondsToSelector:@selector(setDyView:)]) {
-            view.dyView = dyView;
-        }
+        [view loadDyView:dyView];
         return view;
     }
     return nil;

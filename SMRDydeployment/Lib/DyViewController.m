@@ -16,12 +16,16 @@
 @implementation DyViewController
 @synthesize dyPage = _dyPage;
 
-- (void)setDyPage:(SMRDyPage *)dyPage {
+- (void)loadDyPage:(SMRDyPage *)dyPage {
     _dyPage = dyPage;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self dyPageViewDidLoad];
+}
+
+- (void)dyPageViewDidLoad {
     self.view.backgroundColor = [SMRDyUtils color:self.dyPage.backgroundColor];
     
     for (SMRDyView *dv in self.dyPage.sub_views) {

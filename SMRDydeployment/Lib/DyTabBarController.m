@@ -17,7 +17,16 @@
 
 @synthesize dyPage = _dyPage;
 
-- (void)setDyPage:(SMRDyPage *)dyPage {
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self dyPageViewDidLoad];
+}
+
+- (void)dyPageViewDidLoad {
+    
+}
+
+- (void)loadDyPage:(SMRDyPage *)dyPage {
     _dyPage = dyPage;
     
     NSMutableArray<UIViewController *> *controllers = [NSMutableArray array];
@@ -28,10 +37,6 @@
         [controllers addObject:nav];
     }
     self.viewControllers = controllers;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
 }
 
 @end

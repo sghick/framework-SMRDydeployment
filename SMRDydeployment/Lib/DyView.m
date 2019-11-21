@@ -13,7 +13,7 @@
 
 @synthesize dyView = _dyView;
 
-- (void)setDyView:(SMRDyView *)dyView {
+- (void)loadDyView:(SMRDyView *)dyView {
     _dyView = dyView;
     if (dyView.frame) {
         self.frame = [SMRDyUtils rect:dyView.frame];

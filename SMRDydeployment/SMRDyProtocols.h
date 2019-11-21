@@ -17,14 +17,15 @@ NS_ASSUME_NONNULL_BEGIN
 @class SMRDyView;
 @protocol SMRDyViewProtocol <NSObject>
 
-@property (strong, nonatomic) SMRDyView *dyView;
+- (void)loadDyView:(SMRDyView *)dyView;
 
 @end
 
 @class SMRDyPage;
 @protocol SMRDyPageProtocol <NSObject>
 
-@property (strong, nonatomic) SMRDyPage *dyPage;
+- (void)loadDyPage:(SMRDyPage *)dyPage;
+- (void)dyPageViewDidLoad;
 
 @end
 

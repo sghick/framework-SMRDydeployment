@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DyView : UIView<SMRDyViewProtocol>
 
+@property (strong, nonatomic) DyView *dyView;
+
 @end
 
 NS_ASSUME_NONNULL_END

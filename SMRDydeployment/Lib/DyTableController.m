@@ -17,7 +17,7 @@
 
 @synthesize dyPage = _dyPage;
 
-- (void)setDyPage:(SMRDyPage *)dyPage {
+- (void)loadDyPage:(SMRDyPage *)dyPage {
     _dyPage = dyPage;
 }
 

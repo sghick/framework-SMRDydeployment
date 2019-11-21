@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DyTabBarController : UITabBarController<SMRDyPageProtocol>
 
+@property (strong, nonatomic) SMRDyPage *dyPage;
+
 @end
 
 NS_ASSUME_NONNULL_END
