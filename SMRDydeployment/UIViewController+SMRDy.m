@@ -14,6 +14,41 @@
 
 @implementation UIViewController (SMRDy)
 
++ (void)load {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Class cls = [self class];
+        [self dy_swizzlingInstanceMethodWithClass:cls
+                                        originSel:@selector(viewDidLoad)
+                                     swizzlingSel:@selector(dy_swizz_viewDidLoad)];
+    });
+}
+
+- (void)dy_swizz_viewDidLoad {
+    [self dy_swizz_viewDidLoad];
+    [self dyPageViewDidLoad];
+}
+
++ (void)dy_swizzlingInstanceMethodWithClass:(Class)cls
+                                  originSel:(SEL)originSel
+                               swizzlingSel:(SEL)swizzlingSel {
+    Method originMethod = class_getInstanceMethod(cls, originSel);
+    Method swizzlingMethod = class_getInstanceMethod(cls, swizzlingSel);
+    BOOL didAddMethod = class_addMethod(cls,
+                                        originSel,
+                                        method_getImplementation(swizzlingMethod),
+                                        method_getTypeEncoding(swizzlingMethod));
+    
+    if (didAddMethod) {
+        class_replaceMethod(cls,
+                            swizzlingSel,
+                            method_getImplementation(originMethod),
+                            method_getTypeEncoding(originMethod));
+    } else {
+        method_exchangeImplementations(originMethod, swizzlingMethod);
+    }
+}
+
 #pragma mark - SMRDyPageProtocol
 
 - (void)loadDyPage:(SMRDyPage *)dyPage {

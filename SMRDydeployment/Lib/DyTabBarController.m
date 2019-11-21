@@ -7,7 +7,6 @@
 //
 
 #import "DyTabBarController.h"
-#import "SMRDydeployment.h"
 
 @interface DyTabBarController ()
 
@@ -17,7 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self smr_dyPageViewDidLoad];
 }
 
 @end

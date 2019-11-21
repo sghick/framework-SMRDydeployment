@@ -7,7 +7,6 @@
 //
 
 #import "DyTableController.h"
-#import "SMRDydeployment.h"
 
 @interface DyTableController ()
 
@@ -17,7 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self smr_dyPageViewDidLoad];
 }
 
 @end

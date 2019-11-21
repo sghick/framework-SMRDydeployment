@@ -7,7 +7,6 @@
 //
 
 #import "DyViewController.h"
-#import "SMRDydeployment.h"
 
 @interface DyViewController ()
 
@@ -17,7 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self smr_dyPageViewDidLoad];
 }
 
 @end
