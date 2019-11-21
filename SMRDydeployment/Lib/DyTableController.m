@@ -15,15 +15,9 @@
 
 @implementation DyTableController
 
-@synthesize dyPage = _dyPage;
-
-- (void)loadDyPage:(SMRDyPage *)dyPage {
-    _dyPage = dyPage;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self smr_dyPageViewDidLoad];
 }
 
 @end

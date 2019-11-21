@@ -16,4 +16,7 @@
 #import "SMRDyUtils.h"
 #import "SMRDyLoader.h"
 
+#import "UIViewController+SMRDy.h"
+#import "UIView+SMRDy.h"
+
 #endif /* SMRDydeployment_h */

@@ -15,28 +15,9 @@
 
 @implementation DyTabBarController
 
-@synthesize dyPage = _dyPage;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self dyPageViewDidLoad];
-}
-
-- (void)dyPageViewDidLoad {
-    
-}
-
-- (void)loadDyPage:(SMRDyPage *)dyPage {
-    _dyPage = dyPage;
-    
-    NSMutableArray<UIViewController *> *controllers = [NSMutableArray array];
-    for (SMRDyPage *sp in self.dyPage.sub_pages) {
-        UIViewController *page = [SMRDyLoader controllerWithDyPage:sp];
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:page];
-        nav.tabBarItem.title = sp.title;
-        [controllers addObject:nav];
-    }
-    self.viewControllers = controllers;
+    [self smr_dyPageViewDidLoad];
 }
 
 @end

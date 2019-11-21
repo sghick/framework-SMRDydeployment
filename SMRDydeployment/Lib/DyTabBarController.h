@@ -7,13 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SMRDyProtocols.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DyTabBarController : UITabBarController<SMRDyPageProtocol>
-
-@property (strong, nonatomic) SMRDyPage *dyPage;
+@interface DyTabBarController : UITabBarController
 
 @end
 

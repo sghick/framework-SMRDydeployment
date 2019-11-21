@@ -7,13 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SMRDyProtocols.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DyView : UIView<SMRDyViewProtocol>
-
-@property (strong, nonatomic) DyView *dyView;
+@interface DyView : UIView
 
 @end
 

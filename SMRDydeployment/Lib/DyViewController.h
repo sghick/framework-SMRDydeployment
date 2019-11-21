@@ -7,13 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SMRDyProtocols.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DyViewController : UIViewController<SMRDyPageProtocol>
-
-@property (strong, nonatomic) SMRDyPage *dyPage;
+@interface DyViewController : UIViewController
 
 @end
 
