@@ -39,12 +39,24 @@
     
     SMRDyView *leftView = [[SMRDyView alloc] init];
     leftView.class_name = @"DyView";
-    leftView.frame = @"{{10,100},{100,100}}";
+    leftView.frame = @"{{10,100},{300,300}}";
     leftView.backgroundColor = @"#D12920,0.7";
+    
+    SMRDyView *leftView1 = [[SMRDyView alloc] init];
+    leftView1.class_name = @"DyView";
+    leftView1.frame = @"{10,10,110,110}";
+    leftView1.backgroundColor = @"#F19722,0.7";
+    
+    SMRDyView *leftView2 = [[SMRDyView alloc] init];
+    leftView2.class_name = @"DyView";
+    leftView2.frame = @"120,120,110,110";
+    leftView2.backgroundColor = @"#4A80E3,0.7";
+    
+    leftView.sub_views = @[leftView1, leftView2];
     
     SMRDyView *rightView = [[SMRDyView alloc] init];
     rightView.class_name = @"DyView";
-    rightView.frame = @"{{10*5,100*2},{100*0.5,100/2}}";
+    rightView.frame = @"{{10*5,200+100*2},{300*0.5,300/2}}";
     rightView.backgroundColor = @"#848484,0.5";
     
     page.sub_views = @[leftView, rightView];
