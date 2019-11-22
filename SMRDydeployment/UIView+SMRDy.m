@@ -31,8 +31,8 @@
         @try {
             if ([self respondsToSelector:dp.p_setter]) {
                 [SMRDySafePerform safe_performAction:dp.p_setter
-                                              target:self
-                                              object:dp.p_object];
+                                              object:dp.p_object
+                                              target:self];
             } else {
                 NSLog(@"Dylog:-[%@ %@]: unrecognized selector sent to instance %p", NSStringFromClass(self.class), NSStringFromSelector(dp.p_setter), self);
             }

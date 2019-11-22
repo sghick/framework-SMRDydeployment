@@ -10,70 +10,97 @@
 
 @implementation SMRDySafePerform
 
-+ (id)safe_performAction:(SEL)action target:(NSObject *)target object:(id)object {
-    NSMethodSignature* methodSig = [target methodSignatureForSelector:action];
++ (id)safe_performAction:(SEL)action object:(id)object target:(NSObject *)target {
+    return [self safe_performAction:action objects:@[object] target:target];
+}
+
++ (id)safe_performAction:(SEL)action objects:(NSArray *)objects target:(NSObject *)target {
+    NSMethodSignature *methodSig = [target methodSignatureForSelector:action];
     if(methodSig == nil) {
         return nil;
     }
-    const char* retType = [methodSig methodReturnType];
-    
+
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSig];
+    for (NSInteger i = 0; i < objects.count; i++) {
+        id object = objects[i];
+        [self safe_setArgument:object atIndex:(i + 2) invocation:invocation];
+    }
+    [invocation setSelector:action];
+    [invocation setTarget:target];
+    [invocation invoke];
+    return [self safe_getReturnValueAtInvocation:invocation];
+}
+
++ (id)safe_getReturnValueAtInvocation:(NSInvocation *)invocation {
+    const char* retType = [invocation.methodSignature methodReturnType];
     if (strcmp(retType, @encode(void)) == 0) {
-        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSig];
-        [invocation setArgument:&object atIndex:2];
-        [invocation setSelector:action];
-        [invocation setTarget:target];
-        [invocation invoke];
         return nil;
     }
     
     if (strcmp(retType, @encode(NSInteger)) == 0) {
-        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSig];
-        [invocation setArgument:&object atIndex:2];
-        [invocation setSelector:action];
-        [invocation setTarget:target];
-        [invocation invoke];
         NSInteger result = 0;
         [invocation getReturnValue:&result];
         return @(result);
     }
     
     if (strcmp(retType, @encode(BOOL)) == 0) {
-        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSig];
-        [invocation setArgument:&object atIndex:2];
-        [invocation setSelector:action];
-        [invocation setTarget:target];
-        [invocation invoke];
         BOOL result = 0;
         [invocation getReturnValue:&result];
         return @(result);
     }
     
     if (strcmp(retType, @encode(CGFloat)) == 0) {
-        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSig];
-        [invocation setArgument:&object atIndex:2];
-        [invocation setSelector:action];
-        [invocation setTarget:target];
-        [invocation invoke];
         CGFloat result = 0;
         [invocation getReturnValue:&result];
         return @(result);
     }
     
     if (strcmp(retType, @encode(NSUInteger)) == 0) {
-        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSig];
-        [invocation setArgument:&object atIndex:2];
-        [invocation setSelector:action];
-        [invocation setTarget:target];
-        [invocation invoke];
         NSUInteger result = 0;
         [invocation getReturnValue:&result];
         return @(result);
     }
+    id result = nil;
+    [invocation getReturnValue:&result];
+    return result;
+}
+
++ (void)safe_setArgument:(id)object atIndex:(NSInteger)idx invocation:(NSInvocation *)invocation {
+    if (idx >= invocation.methodSignature.numberOfArguments) {
+        return;
+    }
     
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-    return [target performSelector:action withObject:object];
-#pragma clang diagnostic pop
+    const char* argumentType = [invocation.methodSignature getArgumentTypeAtIndex:idx];
+    if (strcmp(argumentType, @encode(void)) == 0) {
+        [invocation setArgument:&object atIndex:idx];
+        return;
+    }
+    
+    if (strcmp(argumentType, @encode(NSInteger)) == 0) {
+        NSInteger value = ((NSNumber *)object).integerValue;
+        [invocation setArgument:&value atIndex:idx];
+        return;
+    }
+    
+    if (strcmp(argumentType, @encode(BOOL)) == 0) {
+        BOOL value = ((NSNumber *)object).boolValue;
+        [invocation setArgument:&value atIndex:idx];
+        return;
+    }
+    
+    if (strcmp(argumentType, @encode(CGFloat)) == 0) {
+        CGFloat value = ((NSNumber *)object).doubleValue;
+        [invocation setArgument:&value atIndex:idx];
+        return;
+    }
+    
+    if (strcmp(argumentType, @encode(NSUInteger)) == 0) {
+        NSUInteger value = ((NSNumber *)object).unsignedLongValue;
+        [invocation setArgument:&value atIndex:idx];
+        return;
+    }
+    
+    [invocation setArgument:&object atIndex:idx];
 }
 
 @end
