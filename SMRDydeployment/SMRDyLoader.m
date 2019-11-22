@@ -36,12 +36,6 @@
     [inWindow makeKeyAndVisible];
 }
 
-- (SMRDyPage *)rootPageWithJson:(NSDictionary *)json {
-    // TODO:test data
-    SMRDyPage *rootPage = [SMRDyPage rootPage];
-    return rootPage;
-}
-
 #pragma mark - Utils
 
 + (UIViewController *)controllerWithDyPage:(SMRDyPage *)dyPage {

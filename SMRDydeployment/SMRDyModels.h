@@ -45,10 +45,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic, nullable) NSArray<SMRDyView *> *sub_views;
 @property (strong, nonatomic, nullable) NSArray<SMRDyPage *> *sub_pages;
 
-#pragma mark - Test
-
-+ (SMRDyPage *)rootPage;
-
 @end
 
 NS_ASSUME_NONNULL_END
