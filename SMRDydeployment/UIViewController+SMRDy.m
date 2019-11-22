@@ -26,7 +26,7 @@
 
 - (void)dy_swizz_viewDidLoad {
     [self dy_swizz_viewDidLoad];
-    [self smr_dyPageViewDidLoad:self.dyPage];
+    [self dyPageViewDidLoad:self.dyPage];
 }
 
 + (void)dy_swizzlingInstanceMethodWithClass:(Class)cls
@@ -62,13 +62,14 @@
 #pragma mark - Utils
 
 - (void)smr_dyPageDidLoad:(SMRDyPage *)dyPage {
-    // None
+    self.dyPage = dyPage;
 }
 
 - (void)smr_dyPageViewDidLoad:(SMRDyPage *)dyPage {
-    self.view.backgroundColor = [SMRDyUtils toUIColor:self.dyPage.backgroundColor];
+    self.dyPage = dyPage;
+    self.view.backgroundColor = [SMRDyUtils toUIColor:dyPage.backgroundColor];
     
-    for (SMRDyView *dv in self.dyPage.sub_views) {
+    for (SMRDyView *dv in dyPage.sub_views) {
         UIView *view = [SMRDyLoader viewWithDyView:dv];
         [self.view addSubview:view];
     }

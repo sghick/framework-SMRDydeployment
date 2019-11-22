@@ -32,6 +32,7 @@
 		1DF9FDCA2387A9C90048755E /* main.json in Resources */ = {isa = PBXBuildFile; fileRef = 1DF9FDC92387A9C90048755E /* main.json */; };
 		1DF9FDD22387C3BA0048755E /* SMRDySafePerform.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF9FDD12387C3BA0048755E /* SMRDySafePerform.m */; };
 		1DF9FDD52387D9E20048755E /* DyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF9FDD42387D9E20048755E /* DyButton.m */; };
+		1DF9FDD72387F83C0048755E /* MainShop.json in Resources */ = {isa = PBXBuildFile; fileRef = 1DF9FDD62387F83C0048755E /* MainShop.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 		1DF9FDD12387C3BA0048755E /* SMRDySafePerform.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMRDySafePerform.m; sourceTree = "<group>"; };
 		1DF9FDD32387D9E20048755E /* DyButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DyButton.h; sourceTree = "<group>"; };
 		1DF9FDD42387D9E20048755E /* DyButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DyButton.m; sourceTree = "<group>"; };
+		1DF9FDD62387F83C0048755E /* MainShop.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MainShop.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				1DF9FDC92387A9C90048755E /* main.json */,
+				1DF9FDD62387F83C0048755E /* MainShop.json */,
 			);
 			path = files;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DF9FDD72387F83C0048755E /* MainShop.json in Resources */,
 				1DF9FDCA2387A9C90048755E /* main.json in Resources */,
 				1D7732D623853725005AD2BC /* LaunchScreen.storyboard in Resources */,
 				1D7732D323853725005AD2BC /* Assets.xcassets in Resources */,

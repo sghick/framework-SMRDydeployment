@@ -20,6 +20,8 @@
 }
 
 - (void)smr_dyViewDidLoad:(SMRDyView *)dyView {
+    self.dyView = dyView;
+    
     if (dyView.frame) {
         self.frame = [SMRDyUtils toCGRect:dyView.frame];
     }

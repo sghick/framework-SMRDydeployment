@@ -7,6 +7,7 @@
 //
 
 #import "DyViewController.h"
+#import "SMRDydeployment.h"
 
 @interface DyViewController ()
 
@@ -14,8 +15,11 @@
 
 @implementation DyViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)dyPageViewDidLoad:(SMRDyPage *)dyPage {
+    NSString *path = [[NSBundle mainBundle] pathForResource:dyPage.identifier ofType:@"json"];
+    SMRDyPage *page = [SMRDyPage dyInstanceWithContentOfFile:path];
+    dyPage = page?:dyPage;
+    [super dyPageViewDidLoad:dyPage];
 }
 
 @end

@@ -11,10 +11,5 @@
 
 @implementation DyButton
 
-- (void)dyViewDidLoad:(SMRDyView *)dyView {
-    [super dyViewDidLoad:dyView];
-    
-    
-}
 
 @end

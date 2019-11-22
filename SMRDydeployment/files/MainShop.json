@@ -1,0 +1,71 @@
+{
+    "identifier": "MainShop",
+    "class_name": "DyViewController",
+    "title": "商城",
+    "backgroundColor": "#D12920",
+    "sub_views": [{
+            "identifier": "TopView",
+            "class_name": "DyView",
+            "frame": "{{10,100},{400,400}}",
+            "backgroundColor": "#D12920,0.7",
+            "sub_views": [{
+                    "identifier": "Subview1",
+                    "class_name": "DyLabel",
+                    "frame": "{10,10,210,210}",
+                    "backgroundColor": "#F19722,0.7",
+                    "properties": [{
+                            "key": "text",
+                            "value": "this is a label"
+                        },
+                        {
+                            "type": "11",
+                            "key": "textColor",
+                            "value": "#999999"
+                        },
+                        {
+                            "key": "textAlignment",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "identifier": "Subview2",
+                    "class_name": "DyButton",
+                    "frame": "30,130,190,90",
+                    "backgroundColor": "#4A80E3,0.7",
+                    "methods": [{
+                            "method": "setTitle:forState:",
+                            "params": [{
+                                    "key": "title",
+                                    "value": "button hahaha~"
+                                },
+                                {
+                                    "key": "forState",
+                                    "value": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "method": "setTitle:forState:",
+                            "params": [{
+                                    "key": "title",
+                                    "value": "hehehe~"
+                                },
+                                {
+                                    "key": "forState",
+                                    "value": "1"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "identifier": "BottomView",
+            "class_name": "DyView",
+            "frame": "{{20*5,100+100*2},{200*0.5,200/2}}",
+            "backgroundColor": "#848484,0.5"
+        }
+    ]
+}

@@ -31,6 +31,9 @@
 }
 
 + (instancetype)dyInstanceWithData:(NSData *)data {
+    if (!data) {
+        return nil;
+    }
     NSDictionary *json =
     [NSJSONSerialization JSONObjectWithData:data
                                     options:NSJSONReadingMutableContainers
