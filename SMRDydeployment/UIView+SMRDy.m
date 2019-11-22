@@ -14,8 +14,11 @@
 
 @implementation UIView (SMRDy)
 
-- (void)loadDyView:(SMRDyView *)dyView {
-    self.dyView = dyView;
+- (void)dyViewDidLoad:(SMRDyView *)dyView {
+    [self smr_dyViewDidLoad:dyView];
+}
+
+- (void)smr_dyViewDidLoad:(SMRDyView *)dyView {
     if (dyView.frame) {
         self.frame = [SMRDyUtils rect:dyView.frame];
         self.backgroundColor = [SMRDyUtils color:dyView.backgroundColor];

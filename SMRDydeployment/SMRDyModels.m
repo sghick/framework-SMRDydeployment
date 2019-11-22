@@ -48,7 +48,7 @@
     leftView1.backgroundColor = @"#F19722,0.7";
     
     SMRDyView *leftView2 = [[SMRDyView alloc] init];
-    leftView2.class_name = @"DyView";
+    leftView2.class_name = @"DyLabel";
     leftView2.frame = @"120,120,110,110";
     leftView2.backgroundColor = @"#4A80E3,0.7";
     

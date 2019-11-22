@@ -26,7 +26,7 @@
 
 - (void)dy_swizz_viewDidLoad {
     [self dy_swizz_viewDidLoad];
-    [self dyPageViewDidLoad];
+    [self smr_dyPageViewDidLoad:self.dyPage];
 }
 
 + (void)dy_swizzlingInstanceMethodWithClass:(Class)cls
@@ -51,19 +51,17 @@
 
 #pragma mark - SMRDyPageProtocol
 
-- (void)loadDyPage:(SMRDyPage *)dyPage {
-    [self smr_loadDyPage:dyPage];
+- (void)dyPageDidLoad:(SMRDyPage *)dyPage {
+    [self smr_dyPageDidLoad:dyPage];
 }
 
-- (void)dyPageViewDidLoad {
-    [self smr_dyPageViewDidLoad];
+- (void)dyPageViewDidLoad:(SMRDyPage *)dyPage {
+    [self smr_dyPageViewDidLoad:dyPage];
 }
 
 #pragma mark - Utils
 
-- (void)smr_loadDyPage:(SMRDyPage *)dyPage {
-    self.dyPage = dyPage;
-    
+- (void)smr_dyPageDidLoad:(SMRDyPage *)dyPage {
     // for UITabBarController
     if ([self isKindOfClass:UITabBarController.class]) {
         UITabBarController *tab = (UITabBarController *)self;
@@ -78,7 +76,7 @@
     }
 }
 
-- (void)smr_dyPageViewDidLoad {
+- (void)smr_dyPageViewDidLoad:(SMRDyPage *)dyPage {
     self.view.backgroundColor = [SMRDyUtils color:self.dyPage.backgroundColor];
     
     for (SMRDyView *dv in self.dyPage.sub_views) {

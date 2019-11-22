@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) SMRDyView *dyView;
 
+/// dyViewDidLoad中已经的处理逻辑
+- (void)smr_dyViewDidLoad:(SMRDyView *)dyView;
+
 @end
 
 NS_ASSUME_NONNULL_END

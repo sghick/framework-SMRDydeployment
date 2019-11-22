@@ -10,6 +10,8 @@
 #import "SMRDyProtocols.h"
 #import "SMRDyEnums.h"
 #import "SMRDyModels.h"
+#import "UIViewController+SMRDy.h"
+#import "UIView+SMRDy.h"
 
 @implementation SMRDyLoader
 
@@ -42,7 +44,8 @@
     Class cls = NSClassFromString(dyPage.class_name);
     UIViewController<SMRDyPageProtocol> *page = (UIViewController<SMRDyPageProtocol> *)[[cls alloc] init];
     if ([page isKindOfClass:UIViewController.class]) {
-        [page loadDyPage:dyPage];
+        page.dyPage = dyPage;
+        [page dyPageDidLoad:dyPage];
         return page;
     }
     return nil;
@@ -52,7 +55,8 @@
     Class cls = NSClassFromString(dyView.class_name);
     UIView<SMRDyViewProtocol> *view = (UIView<SMRDyViewProtocol> *)[[cls alloc] init];
     if ([view isKindOfClass:UIView.class]) {
-        [view loadDyView:dyView];
+        view.dyView = dyView;
+        [view dyViewDidLoad:dyView];
         return view;
     }
     return nil;

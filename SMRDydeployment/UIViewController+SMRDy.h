@@ -16,10 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) SMRDyPage *dyPage;
 
-/// loadDyPage中已经的处理逻辑
-- (void)smr_loadDyPage:(SMRDyPage *)dyPage;
+/// dyPageDidLoad中已经的处理逻辑
+- (void)smr_dyPageDidLoad:(SMRDyPage *)dyPage;
 /// viewDidLoad中需要的处理逻辑
-- (void)smr_dyPageViewDidLoad;
+- (void)smr_dyPageViewDidLoad:(SMRDyPage *)dyPage;
 
 @end
 
