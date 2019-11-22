@@ -47,6 +47,22 @@
         UIView *view = [SMRDyLoader viewWithDyView:dv];
         [self addSubview:view];
     }
+    
+    for (SMRDyMethod *dm in dyView.methods) {
+        @try {
+            if ([self respondsToSelector:NSSelectorFromString(dm.method)]) {
+                [SMRDySafePerform safe_performAction:NSSelectorFromString(dm.method)
+                                             objects:[dm.params valueForKeyPath:@"p_object"]
+                                              target:self];
+            } else {
+                NSLog(@"Dylog:-[%@ %@]: unrecognized selector sent to instance %p", NSStringFromClass(self.class), dm.method, self);
+            }
+        } @catch (NSException *exception) {
+            NSLog(@"Dylog:<%@: %p>:%@", NSStringFromClass(self.class), self, exception);
+        } @finally {
+            
+        }
+    }
 }
 
 #pragma mark - Getters/Setters

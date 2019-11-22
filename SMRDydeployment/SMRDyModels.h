@@ -40,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SMRDyMethod : SMRDyModels
 
 @property (strong, nonatomic) NSString *method;
-@property (strong, nonatomic) NSArray *parms;
+@property (strong, nonatomic) NSArray<SMRDyProperty *> *params;
 
 @end
 
@@ -52,6 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString *backgroundColor;
 
 @property (strong, nonatomic) NSArray<SMRDyProperty *> *properties;
+@property (strong, nonatomic) NSArray<SMRDyMethod *> *methods;
 
 @property (strong, nonatomic, nullable) NSArray<SMRDyView *> *sub_views;
 
@@ -65,6 +66,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString *backgroundColor;
 
 @property (strong, nonatomic) NSArray<SMRDyProperty *> *properties;
+@property (strong, nonatomic) NSArray<SMRDyMethod *> *methods;
 
 @property (strong, nonatomic, nullable) NSArray<SMRDyView *> *sub_views;
 @property (strong, nonatomic, nullable) NSArray<SMRDyPage *> *sub_pages;

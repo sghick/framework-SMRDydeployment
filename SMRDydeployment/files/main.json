@@ -13,32 +13,53 @@
                     "backgroundColor": "#D12920,0.7",
                     "sub_views": [{
                             "identifier": "Subview1",
-                            "class_name": "DyView",
+                            "class_name": "DyLabel",
                             "frame": "{10,10,110,110}",
-                            "backgroundColor": "#F19722,0.7"
+                            "backgroundColor": "#F19722,0.7",
+                            "properties": [{
+                                    "key": "text",
+                                    "value": "this is a label"
+                                },
+                                {
+                                    "type": "11",
+                                    "key": "textColor",
+                                    "value": "#999999"
+                                },
+                                {
+                                    "key": "textAlignment",
+                                    "value": "1"
+                                }
+                            ]
                         },
                         {
                             "identifier": "Subview2",
-                            "class_name": "DyLabel",
-                            "frame": "120,120,110,110",
+                            "class_name": "DyButton",
+                            "frame": "30,130,150,90",
                             "backgroundColor": "#4A80E3,0.7",
-                            "properties": [{
-                                "key":"text",
-                                "value":"this is a label"
-                            },
-                            {
-                                "type":"11",
-                                "key":"textColor",
-                                "value":"#F19722"
-                            },
-                            {
-                                "key":"textAlignment",
-                                "value":"1"
-                            },
-                            {
-                                "key":"frame",
-                                "value":"{110,110,150,50}"
-                            }
+                            "methods": [{
+                                    "method": "setTitle:forState:",
+                                    "params": [{
+                                            "key": "title",
+                                            "value": "button hahaha~"
+                                        },
+                                        {
+                                            "key": "forState",
+                                            "value": "0"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "method": "setTitle:forState:",
+                                    "params": [{
+                                            "key": "title",
+                                            "value": "hehehe~"
+                                        },
+                                        {
+                                            "key": "forState",
+                                            "value": "1"
+                                        }
+                                    ]
+                                }
                             ]
                         }
                     ]

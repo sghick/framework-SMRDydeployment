@@ -91,7 +91,7 @@
     }
     SMRDyMethod *object = [[SMRDyMethod alloc] init];
     object.method = json[@"method"];
-    object.parms = json[@"parms"];
+    object.params = [SMRDyProperty dyArrayWithJson:json[@"params"]];
     return object;
 }
 
@@ -110,6 +110,7 @@
     object.backgroundColor = json[@"backgroundColor"];
     
     object.properties = [SMRDyProperty dyArrayWithJson:json[@"properties"]];
+    object.methods = [SMRDyMethod dyArrayWithJson:json[@"methods"]];
     
     object.sub_views = [SMRDyView dyArrayWithJson:json[@"sub_views"]];
     return object;
@@ -130,9 +131,10 @@
     object.backgroundColor = json[@"backgroundColor"];
     
     object.properties = [SMRDyProperty dyArrayWithJson:json[@"properties"]];
+    object.methods = [SMRDyMethod dyArrayWithJson:json[@"methods"]];
     
-    object.sub_pages = [SMRDyPage dyArrayWithJson:json[@"sub_pages"]];
     object.sub_views = [SMRDyView dyArrayWithJson:json[@"sub_views"]];
+    object.sub_pages = [SMRDyPage dyArrayWithJson:json[@"sub_pages"]];
     return object;
 }
 
