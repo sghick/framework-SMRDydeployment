@@ -7,10 +7,12 @@
 //
 
 #import "SMRDyModels.h"
+#import "SMRDyUtils.h"
 
 @implementation SMRDyModels
 
 + (instancetype)dyInstanceWithJson:(id)json {
+    NSAssert(nil, @"请在子类实现些方法:%@", NSStringFromClass([self class]));
     return nil;
 }
 
@@ -43,19 +45,62 @@
 
 @end
 
+@implementation SMRDyProperty
+
++ (instancetype)dyInstanceWithJson:(id)json {
+    if (![json isKindOfClass:NSDictionary.class]) {
+        return nil;
+    }
+    SMRDyProperty *object = [[SMRDyProperty alloc] init];
+    object.type = ((NSString *)json[@"type"]).integerValue;
+    object.key = json[@"key"];
+    object.value = json[@"value"];
+    return object;
+}
+
+- (SEL)p_setter {
+    NSString *sel = self.key;
+    if(self.key.length) {
+        sel = [sel stringByReplacingCharactersInRange:NSMakeRange(0, 1)
+                                           withString:[sel substringToIndex:1].capitalizedString];
+    }
+    return NSSelectorFromString([NSString stringWithFormat:@"set%@:", sel]);
+}
+
+- (SEL)p_getter {
+    return NSSelectorFromString(self.key);
+}
+
+- (NSObject *)p_object {
+    switch (self.type) {
+        case SMRDyPropertyTypeInt64:{return @(self.value.integerValue);} break;
+        case SMRDyPropertyTypeFrame:{return NSStringFromCGRect([SMRDyUtils rect:self.value]);} break;
+        case SMRDyPropertyTypeFont:{return [SMRDyUtils font:self.value];} break;
+        case SMRDyPropertyTypeColor:{return [SMRDyUtils color:self.value];} break;
+        default:
+            return self.value;
+            break;
+    }
+}
+
+@end
+
 @implementation SMRDyView
 
 + (instancetype)dyInstanceWithJson:(id)json {
     if (![json isKindOfClass:NSDictionary.class]) {
         return nil;
     }
-    SMRDyView *dyView = [[SMRDyView alloc] init];
-    dyView.identifier = json[@"identifier"];
-    dyView.class_name = json[@"class_name"];
-    dyView.frame = json[@"frame"];
-    dyView.backgroundColor = json[@"backgroundColor"];
-    dyView.sub_views = [SMRDyView dyArrayWithJson:json[@"sub_views"]];
-    return dyView;
+    SMRDyView *object = [[SMRDyView alloc] init];
+    object.identifier = json[@"identifier"];
+    object.class_name = json[@"class_name"];
+    object.frame = json[@"frame"];
+    object.backgroundColor = json[@"backgroundColor"];
+    
+    object.properties = [SMRDyProperty dyArrayWithJson:json[@"properties"]];
+    
+    object.sub_views = [SMRDyView dyArrayWithJson:json[@"sub_views"]];
+    return object;
 }
 
 @end
@@ -66,14 +111,17 @@
     if (![json isKindOfClass:NSDictionary.class]) {
         return nil;
     }
-    SMRDyPage *dyView = [[SMRDyPage alloc] init];
-    dyView.identifier = json[@"identifier"];
-    dyView.class_name = json[@"class_name"];
-    dyView.title = json[@"title"];
-    dyView.backgroundColor = json[@"backgroundColor"];
-    dyView.sub_pages = [SMRDyPage dyArrayWithJson:json[@"sub_pages"]];
-    dyView.sub_views = [SMRDyView dyArrayWithJson:json[@"sub_views"]];
-    return dyView;
+    SMRDyPage *object = [[SMRDyPage alloc] init];
+    object.identifier = json[@"identifier"];
+    object.class_name = json[@"class_name"];
+    object.title = json[@"title"];
+    object.backgroundColor = json[@"backgroundColor"];
+    
+    object.properties = [SMRDyProperty dyArrayWithJson:json[@"properties"]];
+    
+    object.sub_pages = [SMRDyPage dyArrayWithJson:json[@"sub_pages"]];
+    object.sub_views = [SMRDyView dyArrayWithJson:json[@"sub_views"]];
+    return object;
 }
 
 @end

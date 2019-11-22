@@ -13,8 +13,9 @@
 #import "SMRDyEnums.h"
 #import "SMRDyModels.h"
 
-#import "SMRDyUtils.h"
 #import "SMRDyLoader.h"
+#import "SMRDyUtils.h"
+#import "SMRDySafePerform.h"
 
 #import "UIViewController+SMRDy.h"
 #import "UIView+SMRDy.h"

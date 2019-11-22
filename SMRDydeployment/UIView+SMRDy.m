@@ -10,6 +10,7 @@
 #import <objc/runtime.h>
 #import "SMRDyLoader.h"
 #import "SMRDyUtils.h"
+#import "SMRDySafePerform.h"
 #import "SMRDyModels.h"
 
 @implementation UIView (SMRDy)
@@ -21,8 +22,27 @@
 - (void)smr_dyViewDidLoad:(SMRDyView *)dyView {
     if (dyView.frame) {
         self.frame = [SMRDyUtils rect:dyView.frame];
+    }
+    if (dyView.backgroundColor) {
         self.backgroundColor = [SMRDyUtils color:dyView.backgroundColor];
     }
+    
+    for (SMRDyProperty *dp in dyView.properties) {
+        @try {
+            if ([self respondsToSelector:dp.p_setter]) {
+                [SMRDySafePerform safe_performAction:dp.p_setter
+                                              target:self
+                                              object:dp.p_object];
+            } else {
+                NSLog(@"Dylog:-[%@ %@]: unrecognized selector sent to instance %p", NSStringFromClass(self.class), NSStringFromSelector(dp.p_setter), self);
+            }
+        } @catch (NSException *exception) {
+            NSLog(@"Dylog:<%@: %p>:%@", NSStringFromClass(self.class), self, exception);
+        } @finally {
+            
+        }
+    }
+    
     for (SMRDyView *dv in dyView.sub_views) {
         UIView *view = [SMRDyLoader viewWithDyView:dv];
         [self addSubview:view];
