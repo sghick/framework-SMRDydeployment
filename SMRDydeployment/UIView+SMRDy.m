@@ -21,10 +21,10 @@
 
 - (void)smr_dyViewDidLoad:(SMRDyView *)dyView {
     if (dyView.frame) {
-        self.frame = [SMRDyUtils rect:dyView.frame];
+        self.frame = [SMRDyUtils toCGRect:dyView.frame];
     }
     if (dyView.backgroundColor) {
-        self.backgroundColor = [SMRDyUtils color:dyView.backgroundColor];
+        self.backgroundColor = [SMRDyUtils toUIColor:dyView.backgroundColor];
     }
     
     for (SMRDyProperty *dp in dyView.properties) {

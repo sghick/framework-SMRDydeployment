@@ -7,6 +7,7 @@
 //
 
 #import "SMRDySafePerform.h"
+#import "SMRDyUtils.h"
 
 @implementation SMRDySafePerform
 
@@ -72,31 +73,31 @@
     }
     
     if (strcmp(argumentType, @encode(NSInteger)) == 0) {
-        NSInteger value = ((NSNumber *)object).integerValue;
+        NSInteger value = [SMRDyUtils toNSInteger:object];
         [invocation setArgument:&value atIndex:idx];
         return;
     }
     
     if (strcmp(argumentType, @encode(BOOL)) == 0) {
-        BOOL value = ((NSNumber *)object).boolValue;
+        BOOL value = [SMRDyUtils toBool:object];
         [invocation setArgument:&value atIndex:idx];
         return;
     }
     
     if (strcmp(argumentType, @encode(CGFloat)) == 0) {
-        CGFloat value = ((NSNumber *)object).doubleValue;
+        CGFloat value = [SMRDyUtils toCGFloat:object];
         [invocation setArgument:&value atIndex:idx];
         return;
     }
     
     if (strcmp(argumentType, @encode(NSUInteger)) == 0) {
-        NSUInteger value = ((NSNumber *)object).unsignedLongValue;
+        NSUInteger value = [SMRDyUtils toNSUInteger:object];
         [invocation setArgument:&value atIndex:idx];
         return;
     }
     
     if (strcmp(argumentType, @encode(CGRect)) == 0) {
-        CGRect value = CGRectFromString(object);
+        CGRect value = [SMRDyUtils toCGRect:object];
         [invocation setArgument:&value atIndex:idx];
         return;
     }

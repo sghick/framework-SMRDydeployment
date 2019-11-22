@@ -66,7 +66,7 @@
 }
 
 - (void)smr_dyPageViewDidLoad:(SMRDyPage *)dyPage {
-    self.view.backgroundColor = [SMRDyUtils color:self.dyPage.backgroundColor];
+    self.view.backgroundColor = [SMRDyUtils toUIColor:self.dyPage.backgroundColor];
     
     for (SMRDyView *dv in self.dyPage.sub_views) {
         UIView *view = [SMRDyLoader viewWithDyView:dv];

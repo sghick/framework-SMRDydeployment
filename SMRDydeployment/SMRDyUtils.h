@@ -15,6 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (id)objectAtIndex:(NSInteger)index array:(NSArray *)array;
 + (id)objectAtIndex:(NSInteger)index array:(NSArray *)array trimSpace:(BOOL)trimSpace;
 
++ (NSInteger)toNSInteger:(id)object;
++ (BOOL)toBool:(id)object;
++ (CGFloat)toCGFloat:(id)object;
++ (NSUInteger)toNSUInteger:(id)object;
+
 /**
  获取rect
  
@@ -29,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
   * 表示按照设备宽进行等比放大
   s1,s2... 表示参照的设置类型,可自定义
  */
-+ (CGRect)rect:(NSString *)string;
++ (CGRect)toCGRect:(id)object;
 
 /**
  获取颜色
@@ -39,7 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
  #FFFFFF,1
  0xFFFFFF,0.5
  */
-+ (UIColor *)color:(NSString *)string;
++ (UIColor *)toUIColor:(id)object;
 
 /**
  获取字体
@@ -49,7 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
  13,,PingFang SC
  13,,,<UIFontWeight>
  */
-+ (UIFont *)font:(NSString *)string;
++ (UIFont *)toUIFont:(id)object;
 
 @end
 

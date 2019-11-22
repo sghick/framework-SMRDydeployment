@@ -31,7 +31,51 @@
     return nil;
 }
 
-+ (CGRect)rect:(NSString *)string {
++ (NSInteger)toNSInteger:(id)object {
+    if ([object isKindOfClass:NSString.class]) {
+        return ((NSString *)object).integerValue;
+    }
+    if ([object isKindOfClass:NSNumber.class]) {
+        return ((NSNumber *)object).integerValue;
+    }
+    return 0;
+}
+
++ (BOOL)toBool:(id)object {
+    if ([object isKindOfClass:NSString.class]) {
+        return ((NSString *)object).boolValue;
+    }
+    if ([object isKindOfClass:NSNumber.class]) {
+        return ((NSNumber *)object).boolValue;
+    }
+    return NO;
+}
+
++ (CGFloat)toCGFloat:(id)object {
+    if ([object isKindOfClass:NSString.class]) {
+        return ((NSString *)object).doubleValue;
+    }
+    if ([object isKindOfClass:NSNumber.class]) {
+        return ((NSNumber *)object).doubleValue;
+    }
+    return 0;
+}
+
++ (NSUInteger)toNSUInteger:(id)object {
+    if ([object isKindOfClass:NSString.class]) {
+        return ((NSString *)object).longLongValue;
+    }
+    if ([object isKindOfClass:NSNumber.class]) {
+        return ((NSNumber *)object).unsignedLongValue;
+    }
+    return 0;
+}
+
++ (CGRect)toCGRect:(id)object {
+    if (![object isKindOfClass:NSString.class]) {
+        return CGRectZero;
+    }
+    NSString *string = (NSString *)object;
     string = [string stringByReplacingOccurrencesOfString:@"{" withString:@""];
     string = [string stringByReplacingOccurrencesOfString:@"}" withString:@""];
     NSArray<NSString *> *sps = [string componentsSeparatedByString:@","];
@@ -42,14 +86,22 @@
     return [SMRDyFrameParser frame:x y:y w:w h:h];
 }
 
-+ (UIColor *)color:(NSString *)string {
++ (UIColor *)toUIColor:(id)object {
+    if (![object isKindOfClass:NSString.class]) {
+        return nil;
+    }
+    NSString *string = (NSString *)object;
     NSArray<NSString *> *sps = [string componentsSeparatedByString:@","];
     NSString *cString = [self objectAtIndex:0 array:sps];
     NSString *alpha = [self objectAtIndex:1 array:sps];
     return [SMRDyColorParser color:cString alpha:alpha];
 }
 
-+ (UIFont *)font:(NSString *)string {
++ (UIFont *)toUIFont:(id)object {
+    if (![object isKindOfClass:NSString.class]) {
+        return nil;
+    }
+    NSString *string = (NSString *)object;
     NSArray<NSString *> *sps = [string componentsSeparatedByString:@","];
     NSString *size = [self objectAtIndex:0 array:sps];
     NSString *type = [self objectAtIndex:1 array:sps];

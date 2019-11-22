@@ -37,6 +37,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface SMRDyMethod : SMRDyModels
+
+@property (strong, nonatomic) NSString *method;
+@property (strong, nonatomic) NSArray *parms;
+
+@end
+
 @interface SMRDyView : SMRDyModels
 
 @property (strong, nonatomic) NSString *identifier;

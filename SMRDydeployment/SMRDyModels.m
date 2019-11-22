@@ -73,14 +73,26 @@
 
 - (NSObject *)p_object {
     switch (self.type) {
-        case SMRDyPropertyTypeInt64:{return @(self.value.integerValue);} break;
-        case SMRDyPropertyTypeFrame:{return NSStringFromCGRect([SMRDyUtils rect:self.value]);} break;
-        case SMRDyPropertyTypeFont:{return [SMRDyUtils font:self.value];} break;
-        case SMRDyPropertyTypeColor:{return [SMRDyUtils color:self.value];} break;
+        case SMRDyPropertyTypeFont:{return [SMRDyUtils toUIFont:self.value];} break;
+        case SMRDyPropertyTypeColor:{return [SMRDyUtils toUIColor:self.value];} break;
         default:
             return self.value;
             break;
     }
+}
+
+@end
+
+@implementation SMRDyMethod
+
++ (instancetype)dyInstanceWithJson:(id)json {
+    if (![json isKindOfClass:NSDictionary.class]) {
+        return nil;
+    }
+    SMRDyMethod *object = [[SMRDyMethod alloc] init];
+    object.method = json[@"method"];
+    object.parms = json[@"parms"];
+    return object;
 }
 
 @end

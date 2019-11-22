@@ -7,12 +7,7 @@
 //
 
 #import "DyLabel.h"
-#import "SMRDydeployment.h"
 
 @implementation DyLabel
-
-- (void)dyViewDidLoad:(SMRDyView *)dyView {
-    [super dyViewDidLoad:dyView];
-}
 
 @end

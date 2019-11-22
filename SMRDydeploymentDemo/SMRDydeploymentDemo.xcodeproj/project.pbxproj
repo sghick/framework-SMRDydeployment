@@ -31,6 +31,7 @@
 		1DC55BB12386A17100ED9D36 /* DyLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC55BB02386A17100ED9D36 /* DyLabel.m */; };
 		1DF9FDCA2387A9C90048755E /* main.json in Resources */ = {isa = PBXBuildFile; fileRef = 1DF9FDC92387A9C90048755E /* main.json */; };
 		1DF9FDD22387C3BA0048755E /* SMRDySafePerform.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF9FDD12387C3BA0048755E /* SMRDySafePerform.m */; };
+		1DF9FDD52387D9E20048755E /* DyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF9FDD42387D9E20048755E /* DyButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,8 @@
 		1DF9FDC92387A9C90048755E /* main.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = main.json; sourceTree = "<group>"; };
 		1DF9FDD02387C3BA0048755E /* SMRDySafePerform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMRDySafePerform.h; sourceTree = "<group>"; };
 		1DF9FDD12387C3BA0048755E /* SMRDySafePerform.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMRDySafePerform.m; sourceTree = "<group>"; };
+		1DF9FDD32387D9E20048755E /* DyButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DyButton.h; sourceTree = "<group>"; };
+		1DF9FDD42387D9E20048755E /* DyButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DyButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +227,8 @@
 				1D77330323853736005AD2BC /* DyView.m */,
 				1DC55BAF2386A17100ED9D36 /* DyLabel.h */,
 				1DC55BB02386A17100ED9D36 /* DyLabel.m */,
+				1DF9FDD32387D9E20048755E /* DyButton.h */,
+				1DF9FDD42387D9E20048755E /* DyButton.m */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -380,6 +385,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DF9FDD52387D9E20048755E /* DyButton.m in Sources */,
 				1D7E3F49238684A700BDB878 /* UIViewController+SMRDy.m in Sources */,
 				1D77330E23853736005AD2BC /* SMRDyLoader.m in Sources */,
 				1DC55BB12386A17100ED9D36 /* DyLabel.m in Sources */,

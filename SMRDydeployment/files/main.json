@@ -23,19 +23,21 @@
                             "frame": "120,120,110,110",
                             "backgroundColor": "#4A80E3,0.7",
                             "properties": [{
-                                "type":"0",
                                 "key":"text",
                                 "value":"this is a label"
                             },
                             {
-                                "type":"13",
+                                "type":"11",
                                 "key":"textColor",
                                 "value":"#F19722"
                             },
                             {
-                                "type":"1",
                                 "key":"textAlignment",
                                 "value":"1"
+                            },
+                            {
+                                "key":"frame",
+                                "value":"{110,110,150,50}"
                             }
                             ]
                         }
