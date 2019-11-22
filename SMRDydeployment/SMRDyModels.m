@@ -50,10 +50,11 @@
         return nil;
     }
     SMRDyView *dyView = [[SMRDyView alloc] init];
+    dyView.identifier = json[@"identifier"];
     dyView.class_name = json[@"class_name"];
     dyView.frame = json[@"frame"];
     dyView.backgroundColor = json[@"backgroundColor"];
-    dyView.sub_views = [SMRDyView dyArrayWithJson:json];
+    dyView.sub_views = [SMRDyView dyArrayWithJson:json[@"sub_views"]];
     return dyView;
 }
 
@@ -66,6 +67,7 @@
         return nil;
     }
     SMRDyPage *dyView = [[SMRDyPage alloc] init];
+    dyView.identifier = json[@"identifier"];
     dyView.class_name = json[@"class_name"];
     dyView.title = json[@"title"];
     dyView.backgroundColor = json[@"backgroundColor"];

@@ -13,6 +13,9 @@
 
 - (void)dyViewDidLoad:(SMRDyView *)dyView {
     [super dyViewDidLoad:dyView];
+    
+    self.text = dyView.class_name;
+    self.textColor = [UIColor blackColor];
 }
 
 @end

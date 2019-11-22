@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SMRDyView : SMRDyModels<SMRDyModelDelegate>
 
+@property (strong, nonatomic) NSString *identifier;
 @property (strong, nonatomic) NSString *class_name;
 @property (strong, nonatomic) NSString *frame;
 @property (strong, nonatomic) NSString *backgroundColor;
@@ -36,8 +37,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SMRDyPage : SMRDyModels<SMRDyModelDelegate>
 
+@property (strong, nonatomic) NSString *identifier;
 @property (strong, nonatomic) NSString *class_name;
-
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *backgroundColor;
 
