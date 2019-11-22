@@ -10,28 +10,16 @@
 
 @implementation SMRDySafePerform
 
-+ (id)safe_performAction:(SEL)action object:(id)object target:(NSObject *)target {
-    return [self safe_performAction:action objects:@[object] target:target];
++ (instancetype)sharedInstance {
+    static dispatch_once_t onceToken;
+    static SMRDySafePerform *_perform = nil;
+    dispatch_once(&onceToken, ^{
+        _perform = [[SMRDySafePerform alloc] init];
+    });
+    return _perform;
 }
 
-+ (id)safe_performAction:(SEL)action objects:(NSArray *)objects target:(NSObject *)target {
-    NSMethodSignature *methodSig = [target methodSignatureForSelector:action];
-    if(methodSig == nil) {
-        return nil;
-    }
-
-    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSig];
-    for (NSInteger i = 0; i < objects.count; i++) {
-        id object = objects[i];
-        [self safe_setArgument:object atIndex:(i + 2) invocation:invocation];
-    }
-    [invocation setSelector:action];
-    [invocation setTarget:target];
-    [invocation invoke];
-    return [self safe_getReturnValueAtInvocation:invocation];
-}
-
-+ (id)safe_getReturnValueAtInvocation:(NSInvocation *)invocation {
+- (id)safe_getReturnValueAtInvocation:(NSInvocation *)invocation {
     const char* retType = [invocation.methodSignature methodReturnType];
     if (strcmp(retType, @encode(void)) == 0) {
         return nil;
@@ -60,12 +48,19 @@
         [invocation getReturnValue:&result];
         return @(result);
     }
+    
+    if (strcmp(retType, @encode(CGRect)) == 0) {
+        CGRect result = CGRectZero;
+        [invocation getReturnValue:&result];
+        return NSStringFromCGRect(result);
+    }
+    
     id result = nil;
     [invocation getReturnValue:&result];
     return result;
 }
 
-+ (void)safe_setArgument:(id)object atIndex:(NSInteger)idx invocation:(NSInvocation *)invocation {
+- (void)safe_setArgument:(id)object atIndex:(NSInteger)idx invocation:(NSInvocation *)invocation {
     if (idx >= invocation.methodSignature.numberOfArguments) {
         return;
     }
@@ -100,7 +95,36 @@
         return;
     }
     
+    if (strcmp(argumentType, @encode(CGRect)) == 0) {
+        CGRect value = CGRectFromString(object);
+        [invocation setArgument:&value atIndex:idx];
+        return;
+    }
+    
     [invocation setArgument:&object atIndex:idx];
+}
+
+#pragma mark - Public
+
++ (id)safe_performAction:(SEL)action object:(id)object target:(NSObject *)target {
+    return [self safe_performAction:action objects:@[object] target:target];
+}
+
++ (id)safe_performAction:(SEL)action objects:(NSArray *)objects target:(NSObject *)target {
+    NSMethodSignature *methodSig = [target methodSignatureForSelector:action];
+    if(methodSig == nil) {
+        return nil;
+    }
+
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSig];
+    for (NSInteger i = 0; i < objects.count; i++) {
+        id object = objects[i];
+        [[self sharedInstance] safe_setArgument:object atIndex:(i + 2) invocation:invocation];
+    }
+    [invocation setSelector:action];
+    [invocation setTarget:target];
+    [invocation invoke];
+    return [[self sharedInstance] safe_getReturnValueAtInvocation:invocation];
 }
 
 @end

@@ -12,9 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SMRDySafePerform : NSObject
 
++ (instancetype)sharedInstance;
+
 + (id)safe_performAction:(SEL)action object:(id)object target:(NSObject *)target;
 + (id)safe_performAction:(SEL)action objects:(NSArray *)objects target:(NSObject *)target;
-+ (id)safe_getReturnValueAtInvocation:(NSInvocation *)invocation;
 
 @end
 
