@@ -10,11 +10,21 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SMRDyModels : NSObject
+@protocol SMRDyModelDelegate <NSObject>
+
++ (instancetype)dyInstanceWithJson:(id)json;
 
 @end
 
-@interface SMRDyView : NSObject
+@interface SMRDyModels : NSObject<SMRDyModelDelegate>
+
++ (NSArray *)dyArrayWithJson:(id)json;
++ (instancetype)dyInstanceWithData:(NSData *)data;
++ (instancetype)dyInstanceWithContentOfFile:(NSString *)file;
+
+@end
+
+@interface SMRDyView : SMRDyModels<SMRDyModelDelegate>
 
 @property (strong, nonatomic) NSString *class_name;
 @property (strong, nonatomic) NSString *frame;
@@ -24,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface SMRDyPage : NSObject
+@interface SMRDyPage : SMRDyModels<SMRDyModelDelegate>
 
 @property (strong, nonatomic) NSString *class_name;
 

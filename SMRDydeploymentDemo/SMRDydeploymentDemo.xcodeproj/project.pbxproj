@@ -29,6 +29,7 @@
 		1D77331E2385551C005AD2BC /* SMRDyFrameParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D77331D2385551C005AD2BC /* SMRDyFrameParser.m */; };
 		1D7E3F49238684A700BDB878 /* UIViewController+SMRDy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7E3F48238684A700BDB878 /* UIViewController+SMRDy.m */; };
 		1DC55BB12386A17100ED9D36 /* DyLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC55BB02386A17100ED9D36 /* DyLabel.m */; };
+		1DF9FDCA2387A9C90048755E /* main.json in Resources */ = {isa = PBXBuildFile; fileRef = 1DF9FDC92387A9C90048755E /* main.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		1D7E3F48238684A700BDB878 /* UIViewController+SMRDy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SMRDy.m"; sourceTree = "<group>"; };
 		1DC55BAF2386A17100ED9D36 /* DyLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DyLabel.h; sourceTree = "<group>"; };
 		1DC55BB02386A17100ED9D36 /* DyLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DyLabel.m; sourceTree = "<group>"; };
+		1DF9FDC92387A9C90048755E /* main.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = main.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 		1D7732FB23853736005AD2BC /* SMRDydeployment */ = {
 			isa = PBXGroup;
 			children = (
+				1DF9FDC623878B240048755E /* files */,
 				1D77330223853736005AD2BC /* Lib */,
 				1D7732FD23853736005AD2BC /* SMRDydeployment.h */,
 				1D7732FC23853736005AD2BC /* SMRDyProtocols.h */,
@@ -231,6 +234,14 @@
 				1D77331D2385551C005AD2BC /* SMRDyFrameParser.m */,
 			);
 			path = SMRDyParsers;
+			sourceTree = "<group>";
+		};
+		1DF9FDC623878B240048755E /* files */ = {
+			isa = PBXGroup;
+			children = (
+				1DF9FDC92387A9C90048755E /* main.json */,
+			);
+			path = files;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,6 +347,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DF9FDCA2387A9C90048755E /* main.json in Resources */,
 				1D7732D623853725005AD2BC /* LaunchScreen.storyboard in Resources */,
 				1D7732D323853725005AD2BC /* Assets.xcassets in Resources */,
 				1D7732D123853723005AD2BC /* Main.storyboard in Resources */,

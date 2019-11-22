@@ -20,14 +20,18 @@
     return loader;
 }
 
-- (void)loadfilepath:(NSString *)filepath inWindow:(UIWindow *)inWindow {
-    NSDictionary *json = [[NSDictionary alloc] initWithContentsOfFile:filepath];
-    [self loadjson:json inWindow:inWindow];
+- (void)loadfile:(NSString *)file inWindow:(UIWindow *)inWindow {
+    SMRDyPage *rootPage = [SMRDyPage dyInstanceWithContentOfFile:file];
+    [self loadDyPage:rootPage inWindow:inWindow];
 }
 
 - (void)loadjson:(NSDictionary *)json inWindow:(UIWindow *)inWindow {
-    SMRDyPage *rootPage = [self rootPageWithJson:json];
-    UIViewController *root = [SMRDyLoader controllerWithDyPage:rootPage];
+    SMRDyPage *rootPage = [SMRDyPage dyInstanceWithJson:json];
+    [self loadDyPage:rootPage inWindow:inWindow];
+}
+
+- (void)loadDyPage:(SMRDyPage *)dyPage inWindow:(UIWindow *)inWindow {
+    UIViewController *root = [SMRDyLoader controllerWithDyPage:dyPage];
     inWindow.rootViewController = root;
     [inWindow makeKeyAndVisible];
 }

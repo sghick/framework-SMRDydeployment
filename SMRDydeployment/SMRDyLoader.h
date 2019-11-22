@@ -16,8 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)loader;
 
-- (void)loadfilepath:(NSString *)filepath inWindow:(UIWindow *)inWindow;
+- (void)loadfile:(NSString *)file inWindow:(UIWindow *)inWindow;
 - (void)loadjson:(NSDictionary *)json inWindow:(UIWindow *)inWindow;
+- (void)loadDyPage:(SMRDyPage *)dyPage inWindow:(UIWindow *)inWindow;
 
 #pragma mark - Utils
 

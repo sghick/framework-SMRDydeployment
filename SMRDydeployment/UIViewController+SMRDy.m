@@ -62,18 +62,7 @@
 #pragma mark - Utils
 
 - (void)smr_dyPageDidLoad:(SMRDyPage *)dyPage {
-    // for UITabBarController
-    if ([self isKindOfClass:UITabBarController.class]) {
-        UITabBarController *tab = (UITabBarController *)self;
-        NSMutableArray<UIViewController *> *controllers = [NSMutableArray array];
-        for (SMRDyPage *dp in self.dyPage.sub_pages) {
-            UIViewController *page = [SMRDyLoader controllerWithDyPage:dp];
-            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:page];
-            nav.tabBarItem.title = dp.title;
-            [controllers addObject:nav];
-        }
-        tab.viewControllers = controllers;
-    }
+    // None
 }
 
 - (void)smr_dyPageViewDidLoad:(SMRDyPage *)dyPage {

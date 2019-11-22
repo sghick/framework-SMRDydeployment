@@ -7,6 +7,7 @@
 //
 
 #import "DyTabBarController.h"
+#import "SMRDydeployment.h"
 
 @interface DyTabBarController ()
 
@@ -16,6 +17,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+
+- (void)dyPageDidLoad:(SMRDyPage *)dyPage {
+    // for UITabBarController
+    if ([self isKindOfClass:UITabBarController.class]) {
+        UITabBarController *tab = (UITabBarController *)self;
+        NSMutableArray<UIViewController *> *controllers = [NSMutableArray array];
+        for (SMRDyPage *dp in self.dyPage.sub_pages) {
+            UIViewController *page = [SMRDyLoader controllerWithDyPage:dp];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:page];
+            nav.tabBarItem.title = dp.title;
+            [controllers addObject:nav];
+        }
+        tab.viewControllers = controllers;
+    }
 }
 
 @end

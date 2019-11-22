@@ -18,8 +18,11 @@
     } else {
         self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     }
+
+    NSString *mainPath = [[NSBundle mainBundle] pathForResource:@"main" ofType:@"json"];
+    [[SMRDyLoader loader] loadfile:mainPath inWindow:self.window];
     
-    [[SMRDyLoader loader] loadjson:nil inWindow:self.window];
+    
 }
 
 
