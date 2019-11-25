@@ -1,0 +1,19 @@
+{
+    "identifier": "MainOrder",
+    "class_name": "DyViewController",
+    "title": "订单",
+    "backgroundColor": "#A19722",
+    "sub_views": [{
+            "identifier": "TopView",
+            "class_name": "DyView",
+            "frame": "{{10,100},{400,400}}",
+            "backgroundColor": "#312920,0.7",
+        },
+        {
+            "identifier": "BottomView",
+            "class_name": "DyView",
+            "frame": "{{20*5,100+100*2},{200*0.5,200/2}}",
+            "backgroundColor": "#648484,0.5"
+        }
+    ]
+}

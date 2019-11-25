@@ -64,6 +64,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString *class_name;
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *backgroundColor;
+@property (strong, nonatomic) NSString *path;
 
 @property (strong, nonatomic) NSArray<SMRDyProperty *> *properties;
 @property (strong, nonatomic) NSArray<SMRDyMethod *> *methods;
