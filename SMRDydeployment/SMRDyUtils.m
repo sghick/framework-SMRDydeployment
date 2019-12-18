@@ -90,7 +90,10 @@
     if (![object isKindOfClass:NSString.class]) {
         return nil;
     }
-    NSString *string = (NSString *)object;
+    if (![object hasPrefix:@"@#"]) {
+        return nil;
+    }
+    NSString *string = [((NSString *)object) substringFromIndex:1];
     NSArray<NSString *> *sps = [string componentsSeparatedByString:@","];
     NSString *cString = [self objectAtIndex:0 array:sps];
     NSString *alpha = [self objectAtIndex:1 array:sps];
@@ -101,13 +104,32 @@
     if (![object isKindOfClass:NSString.class]) {
         return nil;
     }
-    NSString *string = (NSString *)object;
+    if (![object hasPrefix:@"@F"]) {
+        return nil;
+    }
+    NSString *string = [((NSString *)object) substringFromIndex:2];
     NSArray<NSString *> *sps = [string componentsSeparatedByString:@","];
+    if (!sps.count) {
+        return nil;
+    }
     NSString *size = [self objectAtIndex:0 array:sps];
     NSString *type = [self objectAtIndex:1 array:sps];
     NSString *name = [self objectAtIndex:2 array:sps];
     NSString *weight = [self objectAtIndex:3 array:sps];
     return [SMRDyFontParser font:size type:type name:name weight:weight];
+}
+
++ (SEL)toSetter:(NSString *)s {
+    NSString *sel = s;
+    if(sel.length) {
+        sel = [sel stringByReplacingCharactersInRange:NSMakeRange(0, 1)
+                                           withString:[sel substringToIndex:1].capitalizedString];
+    }
+    return NSSelectorFromString([NSString stringWithFormat:@"set%@:", sel]);
+}
+
++ (SEL)toGetter:(NSString *)g {
+    return NSSelectorFromString(g);
 }
 
 @end

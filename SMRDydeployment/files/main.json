@@ -5,25 +5,25 @@
             "identifier": "MainHome",
             "class_name": "DyViewController",
             "title": "首页",
-            "backgroundColor": "#F19722",
+            "backgroundColor": "@#F19722",
         },
         {
             "identifier": "MainShop",
             "class_name": "DyViewController",
             "title": "商城",
-            "backgroundColor": "#D12920"
+            "backgroundColor": "@#D12920"
         },
         {
             "identifier": "MainOrder",
             "class_name": "DyViewController",
             "title": "订单",
-            "backgroundColor": "#A19722"
+            "backgroundColor": "@#A19722"
         },
         {
             "identifier": "MainMine",
             "class_name": "DyViewController",
             "title": "我的",
-            "backgroundColor": "#519722"
+            "backgroundColor": "@#519722"
         }
     ]
 }

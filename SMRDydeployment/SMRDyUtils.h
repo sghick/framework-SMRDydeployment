@@ -56,6 +56,16 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (UIFont *)toUIFont:(id)object;
 
+/**
+ 转换成Set方法选择器
+ */
++ (SEL)toSetter:(NSString *)s;
+
+/**
+ 转换成Get方法选择器
+*/
++ (SEL)toGetter:(NSString *)g;
+
 @end
 
 NS_ASSUME_NONNULL_END

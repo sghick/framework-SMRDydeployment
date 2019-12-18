@@ -29,19 +29,22 @@
         self.backgroundColor = [SMRDyUtils toUIColor:dyView.backgroundColor];
     }
     
-    for (SMRDyProperty *dp in dyView.properties) {
-        @try {
-            if ([self respondsToSelector:dp.p_setter]) {
-                [SMRDySafePerform safe_performAction:dp.p_setter
-                                              object:dp.p_object
-                                              target:self];
-            } else {
-                NSLog(@"Dylog:-[%@ %@]: unrecognized selector sent to instance %p", NSStringFromClass(self.class), NSStringFromSelector(dp.p_setter), self);
+    for (NSDictionary *dp in dyView.properties) {
+        for (NSString *dpk in dp.allKeys) {
+            @try {
+                SEL sel = [SMRDyUtils toSetter:dpk];
+                if ([self respondsToSelector:sel]) {
+                    [SMRDySafePerform safe_performAction:sel
+                                                  object:dp[dpk]
+                                                  target:self];
+                } else {
+                    NSLog(@"Dylog:-[%@ %@]: unrecognized selector sent to instance %p", NSStringFromClass(self.class), NSStringFromSelector(sel), self);
+                }
+            } @catch (NSException *exception) {
+                NSLog(@"Dylog:<%@: %p>:%@", NSStringFromClass(self.class), self, exception);
+            } @finally {
+                
             }
-        } @catch (NSException *exception) {
-            NSLog(@"Dylog:<%@: %p>:%@", NSStringFromClass(self.class), self, exception);
-        } @finally {
-            
         }
     }
     
@@ -50,19 +53,22 @@
         [self addSubview:view];
     }
     
-    for (SMRDyMethod *dm in dyView.methods) {
-        @try {
-            if ([self respondsToSelector:NSSelectorFromString(dm.method)]) {
-                [SMRDySafePerform safe_performAction:NSSelectorFromString(dm.method)
-                                             objects:[dm.params valueForKeyPath:@"p_object"]
-                                              target:self];
-            } else {
-                NSLog(@"Dylog:-[%@ %@]: unrecognized selector sent to instance %p", NSStringFromClass(self.class), dm.method, self);
+    for (NSDictionary *dm in dyView.methods) {
+        for (NSString *dmk in dm.allKeys) {
+            @try {
+                SEL sel = NSSelectorFromString(dmk);
+                if ([self respondsToSelector:sel]) {
+                    [SMRDySafePerform safe_performAction:sel
+                                                 objects:dm[dmk]
+                                                  target:self];
+                } else {
+                    NSLog(@"Dylog:-[%@ %@]: unrecognized selector sent to instance %p", NSStringFromClass(self.class), dmk, self);
+                }
+            } @catch (NSException *exception) {
+                NSLog(@"Dylog:<%@: %p>:%@", NSStringFromClass(self.class), self, exception);
+            } @finally {
+                
             }
-        } @catch (NSException *exception) {
-            NSLog(@"Dylog:<%@: %p>:%@", NSStringFromClass(self.class), self, exception);
-        } @finally {
-            
         }
     }
 }

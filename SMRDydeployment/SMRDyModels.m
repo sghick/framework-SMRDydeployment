@@ -48,57 +48,57 @@
 
 @end
 
-@implementation SMRDyProperty
-
-+ (instancetype)dyInstanceWithJson:(id)json {
-    if (![json isKindOfClass:NSDictionary.class]) {
-        return nil;
-    }
-    SMRDyProperty *object = [[SMRDyProperty alloc] init];
-    object.type = ((NSString *)json[@"type"]).integerValue;
-    object.key = json[@"key"];
-    object.value = json[@"value"];
-    return object;
-}
-
-- (SEL)p_setter {
-    NSString *sel = self.key;
-    if(self.key.length) {
-        sel = [sel stringByReplacingCharactersInRange:NSMakeRange(0, 1)
-                                           withString:[sel substringToIndex:1].capitalizedString];
-    }
-    return NSSelectorFromString([NSString stringWithFormat:@"set%@:", sel]);
-}
-
-- (SEL)p_getter {
-    return NSSelectorFromString(self.key);
-}
-
-- (NSObject *)p_object {
-    switch (self.type) {
-        case SMRDyPropertyTypeFont:{return [SMRDyUtils toUIFont:self.value];} break;
-        case SMRDyPropertyTypeColor:{return [SMRDyUtils toUIColor:self.value];} break;
-        default:
-            return self.value;
-            break;
-    }
-}
-
-@end
-
-@implementation SMRDyMethod
-
-+ (instancetype)dyInstanceWithJson:(id)json {
-    if (![json isKindOfClass:NSDictionary.class]) {
-        return nil;
-    }
-    SMRDyMethod *object = [[SMRDyMethod alloc] init];
-    object.method = json[@"method"];
-    object.params = [SMRDyProperty dyArrayWithJson:json[@"params"]];
-    return object;
-}
-
-@end
+//@implementation SMRDyProperty
+//
+//+ (instancetype)dyInstanceWithJson:(id)json {
+//    if (![json isKindOfClass:NSDictionary.class]) {
+//        return nil;
+//    }
+//    SMRDyProperty *object = [[SMRDyProperty alloc] init];
+//    object.type = ((NSString *)json[@"type"]).integerValue;
+//    object.key = json[@"key"];
+//    object.value = json[@"value"];
+//    return object;
+//}
+//
+//- (SEL)p_setter {
+//    NSString *sel = self.key;
+//    if(self.key.length) {
+//        sel = [sel stringByReplacingCharactersInRange:NSMakeRange(0, 1)
+//                                           withString:[sel substringToIndex:1].capitalizedString];
+//    }
+//    return NSSelectorFromString([NSString stringWithFormat:@"set%@:", sel]);
+//}
+//
+//- (SEL)p_getter {
+//    return NSSelectorFromString(self.key);
+//}
+//
+//- (NSObject *)p_object {
+//    switch (self.type) {
+//        case SMRDyPropertyTypeFont:{return [SMRDyUtils toUIFont:self.value];} break;
+//        case SMRDyPropertyTypeColor:{return [SMRDyUtils toUIColor:self.value];} break;
+//        default:
+//            return self.value;
+//            break;
+//    }
+//}
+//
+//@end
+//
+//@implementation SMRDyMethod
+//
+//+ (instancetype)dyInstanceWithJson:(id)json {
+//    if (![json isKindOfClass:NSDictionary.class]) {
+//        return nil;
+//    }
+//    SMRDyMethod *object = [[SMRDyMethod alloc] init];
+//    object.method = json[@"method"];
+//    object.params = [SMRDyProperty dyArrayWithJson:json[@"params"]];
+//    return object;
+//}
+//
+//@end
 
 @implementation SMRDyView
 
@@ -112,8 +112,8 @@
     object.frame = json[@"frame"];
     object.backgroundColor = json[@"backgroundColor"];
     
-    object.properties = [SMRDyProperty dyArrayWithJson:json[@"properties"]];
-    object.methods = [SMRDyMethod dyArrayWithJson:json[@"methods"]];
+    object.properties = json[@"properties"];
+    object.methods = json[@"methods"];
     
     object.sub_views = [SMRDyView dyArrayWithJson:json[@"sub_views"]];
     return object;
@@ -133,8 +133,8 @@
     object.title = json[@"title"];
     object.backgroundColor = json[@"backgroundColor"];
     
-    object.properties = [SMRDyProperty dyArrayWithJson:json[@"properties"]];
-    object.methods = [SMRDyMethod dyArrayWithJson:json[@"methods"]];
+    object.properties = json[@"properties"];
+    object.methods = json[@"methods"];
     
     object.sub_views = [SMRDyView dyArrayWithJson:json[@"sub_views"]];
     object.sub_pages = [SMRDyPage dyArrayWithJson:json[@"sub_pages"]];

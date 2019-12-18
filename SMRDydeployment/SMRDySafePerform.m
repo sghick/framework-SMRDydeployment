@@ -102,7 +102,22 @@
         return;
     }
     
-    [invocation setArgument:&object atIndex:idx];
+    id ovalue = [self safe_toObject:object];
+    [invocation setArgument:&ovalue atIndex:idx];
+}
+
+- (id)safe_toObject:(NSString *)object {
+    if (![object isKindOfClass:NSString.class]) {
+        return object;
+    }
+    id ovalue = nil;
+    if (!ovalue) {
+        ovalue = [SMRDyUtils toUIColor:object];
+    }
+    if (!ovalue) {
+        ovalue = [SMRDyUtils toUIFont:object];
+    }
+    return ovalue ?: object;
 }
 
 #pragma mark - Public
