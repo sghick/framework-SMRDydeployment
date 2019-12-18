@@ -62,6 +62,9 @@
 #pragma mark - Utils
 
 - (void)smr_dyPageDidLoad:(SMRDyPage *)dyPage {
+    NSString *path = [[NSBundle mainBundle] pathForResource:dyPage.identifier ofType:@"json"];
+    SMRDyPage *page = [SMRDyPage dyInstanceWithContentOfFile:path];
+    dyPage = page?:dyPage;
     self.dyPage = dyPage;
 }
 

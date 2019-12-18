@@ -15,11 +15,4 @@
 
 @implementation DyViewController
 
-- (void)dyPageViewDidLoad:(SMRDyPage *)dyPage {
-    NSString *path = [[NSBundle mainBundle] pathForResource:dyPage.identifier ofType:@"json"];
-    SMRDyPage *page = [SMRDyPage dyInstanceWithContentOfFile:path];
-    dyPage = page?:dyPage;
-    [super dyPageViewDidLoad:dyPage];
-}
-
 @end
