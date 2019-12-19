@@ -6,12 +6,12 @@
     "sub_views": [{
             "identifier": "TopView",
             "class_name": "DyView",
-            "frame": "{{10,100},{400,400}}",
+            "frame": "{{0,100},{w,w}}",
             "backgroundColor": "#D12920,0.7",
             "sub_views": [{
                     "identifier": "Subview1",
                     "class_name": "DyLabel",
-                    "frame": "{10,10,210,210}",
+                    "frame": "{0,10,375*s,375*s1}",
                     "backgroundColor": "#F19722,0.7",
                     "properties": [{
                             "key": "text",

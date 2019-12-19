@@ -30,10 +30,24 @@
     NSString *h = [NSString stringWithFormat:@"%@", @([UIScreen mainScreen].bounds.size.height)];
     string = [string stringByReplacingOccurrencesOfString:@"w" withString:w];
     string = [string stringByReplacingOccurrencesOfString:@"h" withString:h];
-    // TODO:replace s1,s2...
-    string = [string stringByReplacingOccurrencesOfString:@"s1" withString:@"1.5"];
-    string = [string stringByReplacingOccurrencesOfString:@"s2" withString:@"2"];
+    string = [self stringByReplacingSalef:@"s" fromString:string];
+    string = [self stringByReplacingSalef:@"s1" fromString:string];
+    string = [self stringByReplacingSalef:@"s2" fromString:string];
     return string;
+}
+
++ (NSString *)stringByReplacingSalef:(NSString *)salef fromString:(NSString *)fromString {
+    if (![fromString containsString:salef]) {
+        return fromString;
+    }
+    NSNumber *w = [self saleBaseWidthMapper][salef];
+    NSString *r = [NSString stringWithFormat:@"%@", @([UIScreen mainScreen].bounds.size.width/w.doubleValue)];
+    return [fromString stringByReplacingOccurrencesOfString:salef withString:r];
+}
+
++ (NSDictionary *)saleBaseWidthMapper {
+    // width of iPhone6
+    return @{@"s":@(375.0), @"s1":@(375.0), @"s2":@(414.0)};
 }
 
 @end
