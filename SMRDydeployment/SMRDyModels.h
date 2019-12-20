@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SMRDyProperty : SMRDyModels
 
-@property (assign, nonatomic) SMRDyPropertyType type;
+@property (copy  , nonatomic) SMRDyPropertyType type;
 @property (strong, nonatomic) NSString *key;
 @property (strong, nonatomic) NSString *value;
 

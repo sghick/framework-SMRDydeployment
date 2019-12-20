@@ -55,7 +55,7 @@
         return nil;
     }
     SMRDyProperty *object = [[SMRDyProperty alloc] init];
-    object.type = ((NSString *)json[@"type"]).integerValue;
+    object.type = json[@"type"];
     object.key = json[@"key"];
     object.value = json[@"value"];
     return object;
@@ -75,13 +75,13 @@
 }
 
 - (NSObject *)p_object {
-    switch (self.type) {
-        case SMRDyPropertyTypeFont:{return [SMRDyUtils toUIFont:self.value];} break;
-        case SMRDyPropertyTypeColor:{return [SMRDyUtils toUIColor:self.value];} break;
-        default:
-            return self.value;
-            break;
+    if ([SMRDyPropertyTypeUIFont isEqualToString:self.type]) {
+        return [SMRDyUtils toUIFont:self.value];
     }
+    if ([SMRDyPropertyTypeUIColor isEqualToString:self.type]) {
+        return [SMRDyUtils toUIColor:self.value];
+    }
+    return self.value;
 }
 
 @end

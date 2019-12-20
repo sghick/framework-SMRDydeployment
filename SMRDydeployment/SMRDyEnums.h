@@ -9,11 +9,9 @@
 #ifndef SMRDyEnums_h
 #define SMRDyEnums_h
 
-typedef NS_ENUM(NSInteger, SMRDyPropertyType) {
-    SMRDyPropertyTypeBase   = 0,    // 基本类型,包括字符串,数字,结构体等
-    
-    SMRDyPropertyTypeColor  = 11,   // 颜色类型
-    SMRDyPropertyTypeFont   = 12,   // 字体类型
-};
+typedef NSString * SMRDyPropertyType NS_TYPED_ENUM;
+static SMRDyPropertyType const SMRDyPropertyTypeBase = @"";  ///< 基本类型,包括字符串,数字,结构体等
+static SMRDyPropertyType const SMRDyPropertyTypeUIColor = @"UIColor";  ///< 颜色类型
+static SMRDyPropertyType const SMRDyPropertyTypeUIFont = @"UIFont";    ///< 字体类型
 
 #endif /* SMRDyEnums_h */
